@@ -1,0 +1,23 @@
+#/etc/systemd/system/prone.service
+
+[Unit]
+Description=Prone App
+
+[Service]
+ExecStart=/home/ubuntu/.nvm/versions/node/v8.16.0/bin/node app
+# Required on some systems
+WorkingDirectory=/opt/sampleapps/prone/
+Restart=always
+ # Restart service after 10 seconds if node service crashes
+ RestartSec=10
+ # Output to syslog
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=nodejs-prone
+EnvironmentFile=/etc/environment
+Environment=NODE_ENV=development
+User=ubuntu
+Group=ubuntu
+
+[Install]
+WantedBy=multi-user.target

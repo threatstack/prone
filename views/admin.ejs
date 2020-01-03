@@ -1,0 +1,21 @@
+<% layout( 'layout' ) -%>
+<style>
+strong {font-weight: bold}
+</style>
+
+<div id="list">
+  <form action="/admin" method="post" accept-charset="utf-8">
+    <% if( granted == false ){ %>
+    <div class="item-new">
+      <center>username</center>
+      <input class="input" type="text" name="username" />
+      <br/>
+      <center>password</center>
+      <input class="input" type="password" name="password" />
+      <center>
+      <input type="submit">
+      </center>
+    </div>
+    <% } %>
+  </form>
+</div>
