@@ -2,12 +2,6 @@
 
 A vulnerable Node.js demo application, based on the [Dreamers Lab tutorial](http://dreamerslab.com/blog/en/write-a-todo-list-with-express-and-mongodb/).
 
-## Features
-
-This vulnerable app includes the following capabilities to experiment with:
-* [Exploitable packages](#exploiting-the-vulnerabilities) with known vulnerabilities
-* [Runtime alerts](#runtime-alerts) for detecting an invocation of vulnerable functions in open source dependencies
-
 ## Setup
 Sign up at the ThreatStack portal and create a Project and obtain an AGENT_ID
 
@@ -95,15 +89,6 @@ sudo systemctl status nginx
 sudo systemctl restart nginx
 ```
 
-
-### Heroku usage
-Prone requires attaching a MongoLab service to be deployed as a Heroku app. 
-That sets up the MONGOLAB_URI env var so everything after should just work. 
-
-### CloudFoundry usage
-Prone requires attaching a MongoLab service and naming it "prone-mongo" to be deployed on CloudFoundry. 
-The code explicitly looks for credentials to that service. 
-
 ### Cleanup
 To bulk delete the current list of TODO items from the DB run:
 ```bash
@@ -141,49 +126,8 @@ curl -X GET http://localhost:3001/api/todo/eval?content=JSON.stringify(process.e
 ```
 Ref: https://ibreak.software/2016/08/nodejs-rce-and-a-simple-reverse-shell/
 
-## Connecting to Threat Stack App Sec
-
-### Compatibility and Requirements
-Before you install the Node.js microagent, make sure your application meets the following system requirements:
-
-- Node.js version 6 or higher
-- NPM version 5 or higher
-- Python version 2 or 3
-
-### Creating an Account and Logging In
-Go to the main portal page at https://appsec.dev.threatstack.net to create your account using your email address and specify a password. You will immediately be able to log-in. "Forgot Password" functionality is available if a password reset is needed. 
-
-### Creating a Project
-Create a new project by selecting "Projects" from the left navigation bar and then click on "create." Name your project and select which language it uses (for this Preview Release, Node.js is the only option available), then click "save." On the next screen, you can add a brief description of the project and apply tags to help organize your projects. Click "save" and then select "Projects" again from the left navigation bar to return to the projects list. 
-
-### Creating a Microagent ID
-Access the project's Agents page either by clicking the Agents button for that project on the main project page, or by clicking the "Agents reporting" tile from the project's home page. Then click the "New Agent" button on the top right corner of the screen. Enter a name for the agent and click "OK" to create the agent. You can access the new agent's details by clicking "edit" from the agents page.
-
-### Adding the Microagent to your Node Project
-You need to download and install the the monitoring microagent agent to your application and then link it to the agent ID that you created back in the web portal.
-
-Download the microagent from the portal by clicking "Download" on the left nav bar. 
-
-On the developer's machine, navigate to your Node application and use NPM to install the agent. 
-
-```cd /prone
-wget https://bluefyre.blob.core.windows.net/releases/bluefyre-agent-node-x.x.x.tgz
-npm install ./bluefyre-agent-node-x.x.x.tgz
-```
-import the agent to the top of `app.js`
-```
-var agent = require('bluefyre-agent-node')
-```
-You can associate the agent ID with the application via an environment variable. This can be passed on the command line when you start the application.
-```
-BLUEFYRE_AGENT_ID="YOUR_AGENT_ID_GOES_HERE" npm start
-```
-alternativly, add a bluefyre.json file
-```
-{
-    "agent_id": "YOUR_AGENT_ID"
-}
-```
+## Getting started with Threat Stack Application Monitoring
+Refer additional [instructions](https://threatstack.zendesk.com/hc/en-us/articles/360026744372) on how to get advanced application security runtime monitoring from [Threat Stack](https://www.threatstack.com)
 
 ## Attribution
 Inspired by the open source Goof app by [Snyk](snyk.io) available [here](https://github.com/snyk/goof)
