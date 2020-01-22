@@ -10,7 +10,7 @@ services:
       - BLUEFYRE_BLOCK_SQLI=0
       - BLUEFYRE_BLOCK_NOSQLI=0
       - BLUEFYRE_BLOCK_XSS=0
-      - DEBUG="bluefyre:agent"
+      - DEBUG="bluefyre:*"
       - DEBUG_COLORS=true
       - DOCKER=1
     ports:
