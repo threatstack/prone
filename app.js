@@ -1,7 +1,14 @@
 // to allow self signed certs
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
-// require('bluefyre-agent-node');
+try {
+ require('bluefyre-agent-node');
+}
+catch (e) {
+ console.log('UH OH... COULD NOT LOAD THREATSTACK AGENT')
+ console.log(e)
+}
+
 /**
  * Module dependencies.
  */
