@@ -14,3 +14,4 @@ RUN npm install https://pkg.threatstack.com/appsec/node/bluefyre-agent-node-late
 EXPOSE 3001
 EXPOSE 9229
 ENTRYPOINT ["npm", "run", "start-load"]
+# ENTRYPOINT ["tail", "-f", "/dev/null"]
