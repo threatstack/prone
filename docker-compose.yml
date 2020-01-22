@@ -2,8 +2,8 @@ version: "3"
 
 services:
   prone:
-#    build: .
-    image: prone:node10
+    build: .
+#    image: prone:node10
     container_name: prone
     environment:
       - BLUEFYRE_AGENT_ID=SOMETHINGHERE
@@ -13,8 +13,6 @@ services:
       - DEBUG="bluefyre:agent"
       - DEBUG_COLORS=true
       - DOCKER=1
-      - NEW_RELIC_lOG_LEVEL=trace
-      - NEW_RELIC_LOG=stdout
     ports:
       - "3001:3001"
       - "9229:9229"
