@@ -30,6 +30,7 @@ var fileUpload = require('express-fileupload');
 var dustHelpers = require('dustjs-helpers');
 var cons = require('consolidate');
 const { exec } = require('child_process');
+const fs = require('fs')
 
 var app = express();
 var routes = require('./routes');
@@ -105,12 +106,13 @@ http.createServer(app).listen(app.get('port'), function () {
   console.log('Express server listening on port ' + app.get('port'));
 
   // trigger a filesystem vulnerability
+  fileName = 'C:\/boot.ini'
   try {
     // var contents = fs.readFileSync('/../', 'utf8');
-    var contents = fs.readFileSync('C:\/boot.ini', 'utf8');  
+    var contents = fs.writeFileSync(fileName, 'utf8');  
     console.log("opened and read file = contents", contents);  
   } catch(e){
-    console.log("could not open file")
+    console.log("could not open file", fileName, e)
   }
 
 });
