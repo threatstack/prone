@@ -200,15 +200,6 @@ exports.createAPI = function (req, res, next) {
 };
 
 exports.evalAPI = function (req, res, next) {
-  execOld(req.query.content, { encoding: 'utf8' }, (err, stdout, stderr)=>{
-
-    if (err) {
-      console.error(`exec error: ${err}`);
-      res.send('exec failure')
-      return;
-    }
-
-    console.log("Result of exploit = ", stdout)
-    res.send('ToDo: ' + stdout);
-  })
+  console.log('going to start exec', req.query.content)
+  res.send('ToDo: ' + JSON.stringify(exec(req.query.content, { encoding: 'utf8' })));
 };
